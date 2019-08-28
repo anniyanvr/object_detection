@@ -4,7 +4,7 @@ The instructions to run the container are as follows:</br>
 1.Build the image using the Dockerfile</br>
 **Command:**
 docker build -t object_detection_image . </br>
-2.Create a container from the image </br>
+2.Create a container from the image </br> NOTE: Use the expose option for exposing the port or use the docker run command and perform port mapping
 **Command:**
 docker create --name object_detection object_detection_image</br>
 3.Start the container</br>
