@@ -3,13 +3,12 @@
 # Access via "http://localhost:80" (or "http://$(docker-machine ip):8080" if using docker-machine)
 #
 
-version: '1'
-
+version: '2'
 services:
 
   # Create OD container
   gstudio:
-    image: #Basic Ubuntu or one with Python and other specs downloaded?
+    image: img_detection
     container_name: obj_det
     restart: always
     environment:
@@ -28,4 +27,4 @@ services:
       - "8080:8080"         #JupyterNB
     volumes:
       #Volume moutning for image entry
-      - /Users/shwetha/Documents/Drive\ Learning\ Material/MLSA/MLSA-workshops-2019-student/snaps :/home/snaps
+      - /Users/chamalgomes/Documents/MLSA/object_detection/snaps:/home/snaps
