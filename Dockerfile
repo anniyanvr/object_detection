@@ -27,13 +27,17 @@ RUN apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${L
 
 # install nginx
 # add all the repositories (nginx, etc)
-#RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-#   &&  apt-get install -y software-properties-common python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-#   &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-#   &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+    &&  apt-get install -y software-properties-common python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+    &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+    &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+    && apt-get install -y nginx && \
+    rm -rf /var/lib/apt/lists/* && \
+    echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
+    chown -R www-data:www-data /var/lib/nginx
 
-RUN apt install -y nginx \
- && apt-get install -y ufw 
+#RUN apt install -y nginx \
+ #&& apt-get install -y ufw 
  #&& ufw allow 'Nginx HTTP'
 
 # update the keys and repository sources list
@@ -49,5 +53,12 @@ RUN apt-get update \
 #installing systemd for nginx checks
 RUN apt-get install -y systemd
 
+#RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+#EXPOSE  22  25  443  80  8000  1025  143  587  27017 5555 8081
+
+WORKDIR /etc/nginx
+
 #CMD systemctl start nginx  
-CMD ping localhost
+CMD ["nginx"]
+
+EXPOSE 80 443
