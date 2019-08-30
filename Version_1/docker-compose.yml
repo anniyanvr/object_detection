@@ -25,9 +25,9 @@ object_detection:
     #- "8081:80"           #nginx
   volumes:
       #Volume moutning for image entry
-    - /Users/chamalgomes/Documents/MLSA/object_detection/snaps/js_face_recognition.html:/usr/share/nginx/html/index.html
-    - /Users/chamalgomes/Documents/MLSA/object_detection/snaps/opencv.js:/usr/share/nginx/html/opencv.js
-    - /Users/chamalgomes/Documents/MLSA/object_detection/snaps/utils.js:/usr/share/nginx/html/utils.js
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/js_face_recognition.html:/usr/share/nginx/html/index.html
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/opencv.js:/usr/share/nginx/html/opencv.js
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/utils.js:/usr/share/nginx/html/utils.js
 
 
 
