@@ -22,7 +22,6 @@ object_detection:
     #- "8000:8000"         #dev
     #- "8017:27017"        #mongodb
     #- "8080:8080"         #JupyterNB
-    #- "8081:80"           #nginx
   volumes:
       #Volume moutning for image entry
     - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/js_face_recognition.html:/usr/share/nginx/html/index.html
