@@ -22,3 +22,4 @@ docker-compose up </br>
 7.To review the content of the html file get inside the container </br>
 **Command:**
 docker exec -it object_detection bash </br>
+ 
