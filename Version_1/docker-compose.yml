@@ -1,0 +1,33 @@
+# Notebook ,nginx and CV access
+#
+# Access via "http://localhost:80" (or "http://$(docker-machine ip):8080" if using docker-machine)
+#
+# Create OD container
+object_detection:
+  image: object_detection_image
+  container_name: object_detection
+  restart: always
+  environment:
+     - TERM=xterm
+  hostname: '127.0.0.1'
+  ports:
+     - "80:80"             #http
+     - "8080:8080"         #JupyterNB
+     - "443:443"           #https
+    #- "8022:22"           #ssh
+    #- "8025:25"           #smtp
+    #- "8143:143"          #g-imap
+    #- "8587:587"          #g-smtp
+    #- "8432:5432"         #postgres
+    #- "8000:8000"         #dev
+    #- "8017:27017"        #mongodb
+    #- "8080:8080"         #JupyterNB
+  volumes:
+      #Volume moutning for image entry
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/js_face_recognition.html:/usr/share/nginx/html/index.html
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/opencv.js:/usr/share/nginx/html/opencv.js
+    - /Users/chamalgomes/Documents/MLSA/object_detection/Version_1/snaps/utils.js:/usr/share/nginx/html/utils.js
+
+
+
+  
