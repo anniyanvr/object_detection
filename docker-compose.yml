@@ -1,0 +1,30 @@
+# Notebook and CV access
+#
+# Access via "http://localhost:80" (or "http://$(docker-machine ip):8080" if using docker-machine)
+#
+
+version: '2'
+services:
+
+  # Create OD container
+  gstudio:
+    image: img_detection
+    container_name: obj_det
+    restart: always
+    environment:
+      - TERM=xterm
+    hostname: '127.0.0.1'
+    ports:
+      - "80:80"             #http
+      - "443:443"           #https
+      - "8022:22"           #ssh
+      - "8025:25"           #smtp
+      - "8143:143"          #g-imap
+      - "8587:587"          #g-smtp
+      - "8432:5432"         #postgres
+      - "8000:8000"         #dev
+      - "8017:27017"        #mongodb
+      - "8080:8080"         #JupyterNB
+    volumes:
+      #Volume moutning for image entry
+      - /Users/chamalgomes/Documents/MLSA/object_detection/snaps:/home/snaps
