@@ -1,0 +1,61 @@
+<center style="margin-top:4%;">
+ <h1 style="margin-bottom:10px;">Access WebCam using JavaScript</h1>
+ <!-- <video id="video" name="video_disp" autoplay>Not supported in your browser</video> -->
+ <form action = "http://localhost:5000/login" method = "post">
+  <video id="video" name="video_disp"  autoplay controls>Not supported in your browser
+    <Source src="demo.mp4" type="video/mp4">
+  </video>
+ <input type = "file" name = "video_disp" id="video"></input>
+ <input type = "submit" value = "submit" name = "submit"/>
+</form>
+ <!-- <a href="index.php">Click here</a> -->
+</center>
+
+<script>
+
+ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+ if(navigator.getUserMedia){
+  navigator.getUserMedia({video:true},handleVideo,videoError);
+ }
+
+ // function handleVideo(stream){
+ //  document.querySelector('#video').src = window.URL.createObjectURL(stream);
+ //  console.log('#video');
+ //  // goPython();
+ // }
+
+ function videoError(e){
+  alert('Something is wrong');
+ }
+</script>
+<!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script>
+        // function goPython(){
+        //     $.ajax({
+        //       url: "MYSCRIPT.py",
+        //      context: document.body
+        //     }).done(function() {
+        //      alert('finished python script');;
+        //     });
+        // }
+function goPython() {
+var video = document.getElementById("video").value;
+// var email = document.getElementById("email").value;
+// var password = document.getElementById("password").value;
+// var contact = document.getElementById("contact").value;
+// Returns successful data submission message when the entered information is stored in database.
+// var dataString = 'name1=' + name + '&email1=' + email + '&password1=' + password + '&contact1=' + contact;
+
+// AJAX code to submit form.
+$.ajax({
+type: "POST",
+url: "/Users/shwetha/Desktop/opencv/cam_trial.py",
+data: video,
+cache: false,
+success: function(html) {
+console.log('Success')}
+});
+}
+
+</script> -->
